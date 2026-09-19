@@ -1,0 +1,18 @@
+spring:
+    application:
+        name: marketing-service
+
+resilience4j:
+    circuitbreaker:
+        instances:
+            voucherCircuitBreaker:
+                slidingWindowType: COUNT_BASED
+                slidingWindowSize: 3
+                failureRateThreshold: 50
+                minimumNumberOfCalls: 3
+                waitDurationInOpenState: 20s
+                automaticTransitionFromOpenToHalfOpenEnabled: true
+                permittedNumberOfCallsInHalfOpenState: 2
+
+server:
+    port: 8086
